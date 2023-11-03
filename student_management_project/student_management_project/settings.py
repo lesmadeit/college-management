@@ -15,6 +15,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# This way we are telling Django to use our custom model instead of the default one
+AUTH_USER_MODEL ='student_management_app.CustomUser'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -24,6 +27,12 @@ SECRET_KEY = 'django-insecure-6(fydm=ac0a#k)kmcxjqt*z$zj$b01e87+!#o4a@19o!(^159$
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+MEDIA_URL="/media/"
+MEDIA_ROOT=os.path.join(BASE_DIR,"media")
+
+STATIC_URL = 'static/'
+STATIC_ROOT=os.path.join(BASE_DIR,"static")
 
 ALLOWED_HOSTS = []
 
@@ -113,10 +122,9 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
