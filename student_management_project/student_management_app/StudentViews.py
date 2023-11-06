@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
 import datetime
-from .models import CustomUser, Staffs, Courses, Subjects, Students, Attendance, AttendanceReport, LeaveReoprtStudent, FeedBackStudent, StudentResult
+from .models import CustomUser, Staffs, Courses, Subjects, Students, Attendance, AttendanceReport, LeaveReportStudent, FeedBackStudent, StudentResult
 
 def student_home(request):
     student_obj = Students.objects.get(admin=request.user.id)
@@ -103,7 +103,7 @@ def student_view_attendance_post(request):
 
 def student_apply_leave(request):
     student_obj = Students.objects.get(admin=request.user.id)
-    leave_data = LeaveReoprtStudent.objects.filter(student_id=student_obj)
+    leave_data = LeaveReportStudent.objects.filter(student_id=student_obj)
     context = {
         "leave_data": leave_data
     }
@@ -120,7 +120,7 @@ def student_apply_leave_save(request):
 
         student_obj = Students.objects.get(admin = request.user.id)
         try:
-            leave_report = LeaveReoprtStudent(student_id=student_obj,
+            leave_report = LeaveReportStudent(student_id=student_obj,
 											leave_date=leave_date,
 											leave_message=leave_message,
 											leave_status=0)
